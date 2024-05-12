@@ -49,6 +49,7 @@ export interface BridgeConfiguration {
   advertiser?: MDNSAdvertiser;
   port?: number;
   bind?: (InterfaceName | IPAddress) | (InterfaceName | IPAddress)[];
+  overrideAdvertised?: IPAddress;
   setupID?: string[4];
   manufacturer?: string;
   model?: string;
@@ -205,6 +206,7 @@ export class BridgeService {
       mdns: this.config.mdns, // this is deprecated now
       addIdentifyingMaterial: true,
       advertiser: bridgeConfig.advertiser,
+      overrideAdvertised: bridgeConfig.overrideAdvertised,
     };
 
     if (bridgeConfig.setupID && bridgeConfig.setupID.length === 4) {
